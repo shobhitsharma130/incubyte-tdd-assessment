@@ -5,3 +5,6 @@ def test_empty_string_returns_zero():
 
 def test_single_number_returns_value():
     assert add("5") == 5
+
+def test_two_numbers():
+    assert add("1,2") == 3
