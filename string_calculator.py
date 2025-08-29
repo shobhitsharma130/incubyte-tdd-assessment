@@ -1,2 +1,3 @@
 def add(numbers: str) -> int:
-    pass
+    if numbers == "":
+        return 0
