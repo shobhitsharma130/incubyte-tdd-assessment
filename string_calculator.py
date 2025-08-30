@@ -3,18 +3,18 @@ import re
 def add(numbers: str) -> int:
     if numbers == "":
         return 0
-    delimeter = ","
+    delimiter = ","
     if numbers.startswith("//"):
-        delimeter_line,numbers = numbers.split('\n',1)
-        if delimeter_line.startswith("//["):
-            delimeters = re.findall(r"\[(.*?)\]", delimeter_line)
-            delimeter = "|".join(delimeters)
+        delimiter_line,numbers = numbers.split('\n',1)
+        if delimiter_line.startswith("//["):
+            delimiters = re.findall(r"\[(.*?)\]", delimiter_line)
+            delimiter = "|".join(delimiters)
         else:
-            delimeter = delimeter_line[2:]
+            delimiter = delimiter_line[2:]
 
-    normalized = numbers.replace("\n",delimeter)
-    negatives = [n for n in normalized.split(delimeter) if int(n) < 0]
+    normalized = numbers.replace("\n",delimiter)
+    negatives = [n for n in normalized.split(delimiter) if int(n) < 0]
     if negatives:
         raise ValueError(f"Negatives not allowed: {negatives}")
-    parts = [int(num) for num in normalized.split(delimeter) if int(num) <= 1000 ]
+    parts = [int(num) for num in normalized.split(delimiter) if int(num) <= 1000 ]
     return sum(parts)

@@ -30,3 +30,6 @@ def test_numbers_bigger_than_1000_are_ignored():
 def test_delimiters_of_any_length():
     assert add("//[***]\n1***2***3") == 6
     assert add("//[abc]\n4abc5abc6") == 15
+
+def test_multiple_delimiters():
+    assert add("//[*][%]\n1*2%3") == 6
