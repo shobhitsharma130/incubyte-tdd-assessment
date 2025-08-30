@@ -7,5 +7,8 @@ def add(numbers: str) -> int:
         delimeter = delimeter_line[2:]
 
     normalized = numbers.replace("\n",delimeter)
+    negatives = [n for n in normalized.split(delimeter) if int(n) < 0]
+    if negatives:
+        raise ValueError(f"Negatives not allowed: {negatives}")
     parts = [int(num) for num in normalized.split(delimeter)]
     return sum(parts)
