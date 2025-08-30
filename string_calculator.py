@@ -1,10 +1,16 @@
+import re
+
 def add(numbers: str) -> int:
     if numbers == "":
         return 0
     delimeter = ","
     if numbers.startswith("//"):
         delimeter_line,numbers = numbers.split('\n',1)
-        delimeter = delimeter_line[2:]
+        if delimeter_line.startswith("//["):
+            delimeters = re.findall(r"\[(.*?)\]", delimeter_line)
+            delimeter = "|".join(delimeters)
+        else:
+            delimeter = delimeter_line[2:]
 
     normalized = numbers.replace("\n",delimeter)
     negatives = [n for n in normalized.split(delimeter) if int(n) < 0]
