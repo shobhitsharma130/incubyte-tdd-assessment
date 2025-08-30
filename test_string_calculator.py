@@ -14,3 +14,6 @@ def test_multiple_numbers():
 
 def test_newline_and_comma_delimiters():
     assert add("1\n2,3") == 6
+
+def test_custom_delimiter_single_char():
+    assert add("//;\n1;2") == 3
