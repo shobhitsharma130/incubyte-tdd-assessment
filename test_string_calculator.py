@@ -22,3 +22,7 @@ def test_custom_delimiter_single_char():
 def test_negative_numbers_raise_exception():
     with pytest.raises(ValueError, match="Negatives not allowed:"):
         add("1,-2,3,-5")
+
+def test_numbers_bigger_than_1000_are_ignored():
+    assert add("2,1001") == 2
+    assert add("1000,3") == 1003
