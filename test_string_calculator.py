@@ -33,3 +33,8 @@ def test_delimiters_of_any_length():
 
 def test_multiple_delimiters():
     assert add("//[*][%]\n1*2%3") == 6
+
+def test_multiple_delimiters_longer_than_one_char():
+    assert add("//[***][%%]\n1***2%%3") == 6
+    assert add("//[abc][def]\n4abc5def6") == 15
+    assert add("//[longDelim][@@]\n7longDelim8@@9") == 24
